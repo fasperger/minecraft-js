@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useStore } from "../hooks/useStore";
 import { useKeyboard } from "../hooks/useKeyboard";
-import { dirtImg, grassImg, glassImg, woodImg, logImg } from "../images/images";
+import { dirtImg, grassImg, glassImg, woodImg, logImg, stoneImg } from "../images/images";
 
 const images = {
     dirt: dirtImg,
     grass: grassImg,
     glass: glassImg,
     wood: woodImg,
-    log: logImg
+    log: logImg,
+    stone: stoneImg
 }
 
 export const TextureSelector = () => {
@@ -19,7 +20,8 @@ export const TextureSelector = () => {
         grass,
         glass,
         wood,
-        log
+        log, 
+        stone
     } = useKeyboard();
 
 
@@ -31,14 +33,15 @@ export const TextureSelector = () => {
             grass,
             glass,
             wood,
-            log
+            log,
+            stone
         }
         const pressedTexture = Object.entries(textures).find(([k, v]) => v)
         if (pressedTexture) {
             setTexture(pressedTexture[0]);
         }
 
-    }, [setTexture, dirt, grass, glass, wood, log])
+    }, [setTexture, dirt, grass, glass, wood, log, stone])
 
     useEffect(() => {
         const visibilityTimeout = setTimeout(() => {
